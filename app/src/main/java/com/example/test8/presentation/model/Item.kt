@@ -1,6 +1,6 @@
 package com.example.test8.presentation.model
 
-data class Item (
+data class Item(
     val id: Int,
     val cover: String,
     val price: String,

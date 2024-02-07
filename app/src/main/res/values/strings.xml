@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="statistics">Statistics</string>
+    <string name="barcelona">Barcelona</string>
+    <string name="favourites">favourites</string>
+    <string name="home">home</string>
+    <string name="messages">messages</string>
 </resources>

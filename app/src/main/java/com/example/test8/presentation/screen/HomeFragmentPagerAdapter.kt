@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.test8.databinding.ItemLayoutBinding
+import com.example.test8.presentation.extension.loadImage
 import com.example.test8.presentation.model.Item
 
-class HomeFragmentRecyclerAdapter :
-    ListAdapter<Item, HomeFragmentRecyclerAdapter.ItemsViewHolder>(ItemsDiffUtil()) {
+class HomeFragmentPagerAdapter :
+    ListAdapter<Item, HomeFragmentPagerAdapter.ItemsViewHolder>(ItemsDiffUtil()) {
 
     inner class ItemsViewHolder(private val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -17,8 +18,14 @@ class HomeFragmentRecyclerAdapter :
 
         fun bind() {
             model = currentList[adapterPosition]
-            binding.apply {
 
+            binding.apply {
+                image.loadImage(model.cover)
+                location.text = model.location
+                reactCount.text = model.reactionCount.toString()
+                title.text = model.title
+                price.text = model.price
+                ratingStars.rating = model.rate?.toFloat() ?: 0.0f
             }
         }
     }

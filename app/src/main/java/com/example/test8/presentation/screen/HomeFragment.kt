@@ -1,6 +1,5 @@
 package com.example.test8.presentation.screen
 
-import android.util.Log.d
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,15 +11,18 @@ import com.example.test8.presentation.event.HomeEvent
 import com.example.test8.presentation.extension.showSnackBar
 import com.example.test8.presentation.state.HomeState
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
     private val viewModel: HomeFragmentViewModel by viewModels()
+    private lateinit var adapter: HomeFragmentPagerAdapter
 
     override fun bind() {
+        adapter = HomeFragmentPagerAdapter()
+        binding.pager.adapter = adapter
+
         viewModel.onEvent(HomeEvent.FetchItems)
     }
 
@@ -39,12 +41,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     }
 
     private fun handleHomeState(state: HomeState) {
-//        binding.loaderInclude.loaderContainer.visibility =
-//            if (state.isLoading) View.VISIBLE else View.GONE
-//
-//        state.items?.let {
-//            d("jibia", "$it")
-//        }
+        binding.progress.visibility =
+            if (state.isLoading) View.VISIBLE else View.GONE
+
+        state.items?.let {
+            (binding.pager.adapter as? HomeFragmentPagerAdapter)?.submitList(it)
+        }
 
         state.errorMessage?.let {
             binding.root.showSnackBar(message = it)

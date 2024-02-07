@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="RatingBar">
         <item name="colorControlNormal">@color/light_gray</item>
         <item name="colorControlActivated">@color/yellow</item>
@@ -8,5 +8,9 @@
     <style name="roundedImage">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">30dp</item>
+    </style>
+
+    <style name="Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/lime</item>
     </style>
 </resources>

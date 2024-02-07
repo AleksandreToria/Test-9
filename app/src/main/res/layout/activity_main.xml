@@ -19,12 +19,20 @@
         app:navGraph="@navigation/nav_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/nav_view"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/menu"
+        android:background="@color/nav_background"
+        android:elevation="16dp"
+        android:paddingHorizontal="2dp"
+        app:itemIconSize="24dp"
+        app:itemActiveIndicatorStyle="@style/Custom.Indicator"
+        app:itemIconTint="@color/white"
+        app:itemPadding="4dp"
+        app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
